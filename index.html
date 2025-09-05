@@ -85,7 +85,9 @@
         >
           &times;
         </button>
-        <button type="button" class="font-bold" onclick="closeScoreboard()">Close</button>
+        <button type="button" class="font-bold" onclick="closeScoreboard()">
+          Close
+        </button>
       </div>
     </div>
 
@@ -284,12 +286,12 @@
         console.log(scores);
 
         if (scores.length === 0) {
-          scoreList.innerHTML = "<li class='font-bold text-md text-gray-700'>No scores yet.</li>";
+          scoreList.innerHTML =
+            "<li class='font-bold text-md text-gray-700'>No scores yet.</li>";
         }
 
         scores
           .sort((a, b) => b.score - a.score)
-          .slice(0, 10)
           .forEach((entry, index) => {
             const li = document.createElement("li");
             const date = new Date(entry.timestamp).toLocaleString();
