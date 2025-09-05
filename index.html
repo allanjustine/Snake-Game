@@ -231,7 +231,7 @@
           clearInterval(game);
           updateHighScore(score);
           showGameOverScreen();
-          if (score > 0) {
+          if (Number(score) > Number(localStorage.getItem("highScore"))) {
             await postScoreSnake(score);
           }
           return;
