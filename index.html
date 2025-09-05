@@ -56,18 +56,20 @@
     <!-- Game Over Screen -->
     <div
       id="gameOverScreen"
-      class="fixed inset-0 bg-gray-900 bg-opacity-90 text-white flex-col items-center justify-center hidden z-50 text-center"
+      class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50"
     >
-      <h2 class="text-4xl font-bold mb-4">Game Over</h2>
-      <p id="finalScore" class="text-xl mb-2"></p>
-      <p id="highScore" class="text-xl mb-4"></p>
-      <button
-        type="button"
-        onclick="location.reload()"
-        class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white"
-      >
-        Restart Game
-      </button>
+      <div class="flex justify-center flex-col items-center text-white">
+        <h2 class="text-4xl font-bold mb-4 text-red-500">Game Over!</h2>
+        <p id="finalScore" class="text-xl mb-2"></p>
+        <p id="highScore" class="text-xl mb-4"></p>
+        <button
+          type="button"
+          onclick="location.reload()"
+          class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white"
+        >
+          Restart Game
+        </button>
+      </div>
     </div>
 
     <!-- Scoreboard Modal -->
