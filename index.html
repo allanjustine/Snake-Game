@@ -292,41 +292,38 @@
             "<li class='font-bold text-md text-gray-700'>No scores yet.</li>";
         }
 
-        scores
-          .sort((a, b) => b.score - a.score)
-          .forEach((entry, index) => {
-            const li = document.createElement("li");
-            const date = new Date(entry.timestamp).toLocaleString();
-            li.innerHTML = `
-            <div class="flex justify-between items-center w-full gap-12">
-                <div class="flex items-center gap-2.5 items-center">
-                    <div class="bg-no-repeat bg-contain bg-center" style="${
-                      index === 0
-                        ? "background-image: url('https://media.tenor.com/2Jcp2gPh78oAAAAi/crown-joypixels.gif') width: 50px; height: 50px;"
-                        : index === 1
-                        ? "background-image: url('https://media.tenor.com/2TITZ_dguLQAAAAi/princess-tiara.gif') width: 50px; height: 50px;"
-                        : index === 2
-                        ? "background-image: url('https://media.tenor.com/69Akk5XvEeMAAAAi/queen.gif') width: 50px; height: 50px;"
-                        : index === 3
-                        ? "background-image: url('https://media.tenor.com/c4Bw2bvsu-YAAAAi/crown-gold.gif') width: 50px; height: 50px;"
-                        : ""
-                    }">
+        scores.forEach((entry, index) => {
+          const li = document.createElement("li");
+          let gifStyle = "";
+          if (index === 0) {
+            gifStyle =
+              "background-image: url('https://media.tenor.com/2Jcp2gPh78oAAAAi/crown-joypixels.gif'); width: 50px; height: 50px;";
+          } else if (index === 1) {
+            gifStyle =
+              "background-image: url('https://media.tenor.com/2TITZ_dguLQAAAAi/princess-tiara.gif'); width: 50px; height: 50px;";
+          } else if (index === 2) {
+            gifStyle =
+              "background-image: url('https://media.tenor.com/69Akk5XvEeMAAAAi/queen.gif'); width: 50px; height: 50px;";
+          } else if (index === 3) {
+            gifStyle =
+              "background-image: url('https://media.tenor.com/c4Bw2bvsu-YAAAAi/crown-gold.gif'); width: 50px; height: 50px;";
+          }
+
+          li.innerHTML = `
+                <div class="flex justify-between items-center w-full gap-12">
+                    <div class="flex items-center gap-2.5">
+                        <div class="bg-no-repeat bg-contain bg-center" style="${gifStyle}"></div>
+                        <div class="flex flex-col space-y-0.5">
+                            <span class="name text-gray-200 font-bold text-xl">${entry.player_name}</span>
+                        </div>
                     </div>
-                    <div class="flex flex-col space-y-0.5">
-                        <span class="name text-gray-800 font-bold text-xl">${
-                          entry.player_name
-                        }</span>
+                    <div>
+                        <h1 class="text-sky-400 font-bold text-4xl">${entry.score}</h1>
                     </div>
                 </div>
-                <div>
-                    <h1 class="text-sky-400 font-bold text-4xl">${
-                      entry.score
-                    }</h1>
-                </div>
-            </div>
             `;
-            scoreList.appendChild(li);
-          });
+          scoreList.appendChild(li);
+        });
 
         document.getElementById("scoreboardModal").classList.remove("hidden");
       }
